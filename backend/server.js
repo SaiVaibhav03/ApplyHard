@@ -1,11 +1,22 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
+
+app.use(
+	cors({
+		origin: 'http://127.0.0.1:5173/',
+		// methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+		// credentials: true,
+	})
+);
 app.use(express.json());
 
 mongoose
-	.connect('mongodb://localhost:27017/applyhard')
+	.connect(process.env.MONGO_URI)
 	.then(() => console.log('Mongoose Connection Successful'))
 	.catch(() => console.log('Mongoose Connection Failed'));
 
