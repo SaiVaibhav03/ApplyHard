@@ -20,22 +20,8 @@ mongoose
 	.then(() => console.log('Mongoose Connection Successful'))
 	.catch(() => console.log('Mongoose Connection Failed'));
 
-app.use('/', (req, res) => {
-	console.log(req.query);
-	if (req.query.closeMongo == 'true') {
-		mongoose
-			.disconnect()
-			.then(() => console.log(`MongoDB Connection Closed`))
-			.catch(() => console.log(`MongoDB Connection Closed Failed`));
-	}
-	res.send(`
-			<div>
-				<button onclick="fetch('/?closeMongo=true')">
-					Close Mongo
-				</button>
-			</div>
-		`);
-});
+const authRoutes = require('./routes/authRoutes.js');
+app.use('/api/auth', authRoutes);
 
 app.listen(3000, () => {
 	console.log('3000 port started listening');
