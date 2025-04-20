@@ -1,3 +1,9 @@
 #root {
-	background-color: #888;
+	@apply h-screen w-screen text-[#e3e3e3];
+}
+.navbar {
+	@apply flex items-center;
+}
+.loginPage {
+	@apply h-screen w-screen bg-[#213547];
 }
