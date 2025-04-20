@@ -1,11 +1,11 @@
 const express = require('express');
 const User = require('../models/User.js');
-const bycrpt = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const router = express.Router();
 
-router.post('/register', async (req, res) => {
+router.post('/signup', async (req, res) => {
 	const { name, email, password } = req.body;
 	try {
 		let user = await User.findOne({ email });
