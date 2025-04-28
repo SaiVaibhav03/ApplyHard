@@ -15,6 +15,7 @@ const UserSchema = new mongoose.Schema({
 		type: String,
 		require: true,
 	},
+	refresh_Tokens: [String],
 });
 
 UserSchema.pre('save', async function (next) {
