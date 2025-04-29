@@ -13,8 +13,11 @@ function AuthForm({ showPathName }: { showPathName: string }) {
 		form_data.email = formData.get('form[email]');
 		form_data.password = formData.get('form[password]');
 
-		const response = await axios.post(`http://localhost:3000/api/auth/${showPathName}`, form_data);
+		const response = await axios.post(`http://localhost:3000/api/auth/${showPathName}`, form_data, {
+			withCredentials: true,
+		});
 		console.log('response' + JSON.stringify(response.data));
+		localStorage.setItem('accessToken', response.data.accessToken);
 	};
 
 	return (
