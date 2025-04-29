@@ -4,6 +4,6 @@
 .navbar {
 	@apply flex items-center;
 }
-.loginPage {
+.authLayout {
 	@apply h-screen w-screen bg-[#213547];
 }
