@@ -28,8 +28,8 @@ router.post('/signup', async (req, res) => {
 
 		res.cookie('refreshToken', refreshToken, {
 			httpOnly: true,
-			secure: true,
-			sameSite: 'none',
+			secure: false,
+			sameSite: 'strict',
 			path: '/api/auth',
 			maxAge: 7 * 24 * 60 * 60 * 1000,
 		});
@@ -57,8 +57,8 @@ router.post('/login', async (req, res) => {
 
 		res.cookie('refreshToken', refreshToken, {
 			httpOnly: true,
-			secure: true,
-			sameSite: 'none',
+			secure: false,
+			sameSite: 'lax',
 			path: '/api/auth',
 			maxAge: 7 * 24 * 60 * 60 * 1000,
 		});
@@ -124,7 +124,7 @@ router.delete('/logout', async (req, res) => {
 
 		res.clearCookie('refreshToken', {
 			httpOnly: true,
-			secure: true,
+			secure: false,
 			sameSite: 'none',
 			path: '/api/auth',
 		});
