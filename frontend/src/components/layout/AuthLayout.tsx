@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import NavigationBar from '../NavigationBar.tsx';
 
 type AuthLayoutProps = {
@@ -8,7 +9,7 @@ type AuthLayoutProps = {
 	linkHref: string;
 };
 
-function AuthLayout({ title, subtitle, children, linkText, linkHref }: AuthLayoutProps) {
+function AuthLayout({ title, subtitle, children, linkText, linkHref }: AuthLayoutProps): JSX.Element {
 	return (
 		<div className="authLayout">
 			<NavigationBar />

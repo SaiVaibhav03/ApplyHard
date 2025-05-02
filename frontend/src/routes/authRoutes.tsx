@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import SignupPage from '../pages/SignupPage.tsx';
-import LoginPage from '../pages/LoginPage.tsx';
+import SignupPage from '../pages/SignupPage';
+import LoginPage from '../pages/LoginPage';
 import { JSX } from 'react';
 
 function authRoutes(): JSX.Element {

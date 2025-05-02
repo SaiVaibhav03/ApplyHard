@@ -1,8 +1,9 @@
+import { JSX } from 'react';
 import AuthForm from '../components/AuthForm';
 import AuthLayout from '../components/layout/AuthLayout';
-import useAuthVerification from '../hooks/useAuthVerification.ts';
+import useAuthVerification from '../hooks/useAuthVerification';
 
-export default function SignupPage() {
+export default function SignupPage(): JSX.Element {
 	const { isLoading, message } = useAuthVerification();
 
 	return (

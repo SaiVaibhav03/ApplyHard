@@ -1,8 +1,9 @@
-import { Link, useLocation } from 'react-router-dom';
+import { JSX } from 'react';
+import { Link, useLocation, Location } from 'react-router-dom';
 
-function NavigationBar() {
-	const location = useLocation();
-	const path = location.pathname;
+function NavigationBar(): JSX.Element {
+	const location: Location = useLocation();
+	const path: string = location.pathname;
 	return (
 		<header className="h-1/12 w-screen p-3">
 			<nav>

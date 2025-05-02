@@ -2,33 +2,37 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-function useAuthVerification() {
-	const [isLoading, setIsLoading] = useState(true);
-	const [message, setMessage] = useState('Loading... Please Wait a moment');
+type useAuthVerificationReturn = {
+	isLoading: boolean,
+	message: string,
+}
+
+function useAuthVerification(): useAuthVerificationReturn {
+	const [isLoading, setIsLoading] = useState<boolean>(true);
+	const [message, setMessage] = useState<string>('Loading... Please Wait a moment');
 	const navigate = useNavigate();
 
-	const VerifyPermission = () => {
+	const VerifyPermission = (): boolean => {
 		try {
-			// we can write line of code like this to get boolean values
 			// return localStorage.getItem('accessToken') ? true : false;
 			return !!localStorage.getItem('accessToken');
 		} catch (err) {
-			console.log(err);
+			console.error(err);
 			setMessage('Enable Cookie and Site Data Permission');
 			return false;
 		}
 	};
 
-	const VerifySession = async () => {
+	const VerifySession = async (): Promise<void> => {
 		try {
-			const response = await axios.post(
+			const { data } = await axios.post<{ accessToken: string }>(
 				'http://localhost:3000/api/auth/verify-session',
 				{},
 				{
 					withCredentials: true,
 				}
 			);
-			console.log('Session verified:', response.data);
+			console.log('Session verified:', data.accessToken);
 			navigate('/');
 		} catch (err) {
 			console.log('Error verifying session:', err);
@@ -39,7 +43,7 @@ function useAuthVerification() {
 
 	// try for 3 times and then show login page - feature
 	useEffect(() => {
-		const isPermission = VerifyPermission();
+		const isPermission: boolean = VerifyPermission();
 		if (isPermission) {
 			VerifySession();
 		} else {

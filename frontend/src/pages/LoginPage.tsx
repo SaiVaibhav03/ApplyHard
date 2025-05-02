@@ -1,8 +1,9 @@
-import AuthForm from '../components/AuthForm.tsx';
-import AuthLayout from '../components/layout/AuthLayout.tsx';
-import useAuthVerification from '../hooks/useAuthVerification.ts';
+import { JSX } from 'react';
+import AuthForm from '../components/AuthForm';
+import AuthLayout from '../components/layout/AuthLayout';
+import useAuthVerification from '../hooks/useAuthVerification';
 
-export default function LoginPage() {
+export default function LoginPage(): JSX.Element {
 	const { isLoading, message } = useAuthVerification();
 
 	return (
